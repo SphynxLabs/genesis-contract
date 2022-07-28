@@ -81,7 +81,7 @@ library RLPDecode {
         uint8 byte0;
         uint memPtr = item.memPtr;
         assembly {
-            byte0 := byte(0, mload(memPtr))
+            byte0 := bytes1(0, mload(memPtr))
         }
 
         if (byte0 < LIST_SHORT_START)
@@ -107,7 +107,7 @@ library RLPDecode {
         uint result;
         uint memPtr = item.memPtr;
         assembly {
-            result := byte(0, mload(memPtr))
+            result := bytes1(0, mload(memPtr))
         }
 
         return result == 0 ? false : true;
@@ -189,7 +189,7 @@ library RLPDecode {
         uint itemLen;
         uint byte0;
         assembly {
-            byte0 := byte(0, mload(memPtr))
+            byte0 := bytes1(0, mload(memPtr))
         }
 
         if (byte0 < STRING_SHORT_START)
@@ -234,7 +234,7 @@ library RLPDecode {
     function _payloadOffset(uint memPtr) private pure returns (uint) {
         uint byte0;
         assembly {
-            byte0 := byte(0, mload(memPtr))
+            byte0 := bytes1(0, mload(memPtr))
         }
 
         if (byte0 < STRING_SHORT_START)
