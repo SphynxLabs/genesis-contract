@@ -9,24 +9,24 @@ const validators = [
     bscFeeAddr: "0x20dbfb3c0441a2ac9350f6667e83a7329aa0e4ae",
     votingPower: 0x0000000000000064
   },
-  {
-    consensusAddr: "0xd16b07d8749f26a6f4e6587ef4d24ab4fadfee4e",
-    feeAddr: "0xd16b07d8749f26a6f4e6587ef4d24ab4fadfee4e",
-    bscFeeAddr: "0xd16b07d8749f26a6f4e6587ef4d24ab4fadfee4e",
-    votingPower: 0x0000000000000064
-  },
-  {
-    consensusAddr: "0x4e30857d09b0dbf8a991eb9562a6e7d555b9f498",
-    feeAddr: "0x4e30857d09b0dbf8a991eb9562a6e7d555b9f498",
-    bscFeeAddr: "0x4e30857d09b0dbf8a991eb9562a6e7d555b9f498",
-    votingPower: 0x0000000000000064
-  },
-  {
-    consensusAddr: "0x960b99c3ae10744bf7e62f72970e1e83a88ef40b",
-    feeAddr: "0x960b99c3ae10744bf7e62f72970e1e83a88ef40b",
-    bscFeeAddr: "0x960b99c3ae10744bf7e62f72970e1e83a88ef40b",
-    votingPower: 0x0000000000000064
-  }
+  // {
+  //   consensusAddr: "0xd16b07d8749f26a6f4e6587ef4d24ab4fadfee4e",
+  //   feeAddr: "0xd16b07d8749f26a6f4e6587ef4d24ab4fadfee4e",
+  //   bscFeeAddr: "0xd16b07d8749f26a6f4e6587ef4d24ab4fadfee4e",
+  //   votingPower: 0x0000000000000064
+  // },
+  // {
+  //   consensusAddr: "0x4e30857d09b0dbf8a991eb9562a6e7d555b9f498",
+  //   feeAddr: "0x4e30857d09b0dbf8a991eb9562a6e7d555b9f498",
+  //   bscFeeAddr: "0x4e30857d09b0dbf8a991eb9562a6e7d555b9f498",
+  //   votingPower: 0x0000000000000064
+  // },
+  // {
+  //   consensusAddr: "0x960b99c3ae10744bf7e62f72970e1e83a88ef40b",
+  //   feeAddr: "0x960b99c3ae10744bf7e62f72970e1e83a88ef40b",
+  //   bscFeeAddr: "0x960b99c3ae10744bf7e62f72970e1e83a88ef40b",
+  //   votingPower: 0x0000000000000064
+  // }
 ];
 
 // ===============  Do not edit below ====
