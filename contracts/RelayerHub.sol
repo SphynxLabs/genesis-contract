@@ -66,8 +66,8 @@ contract RelayerHub is IRelayerHub, System, IParamSubscriber{
 
   function  unregister() external exist onlyInit{
     relayer memory r = relayers[msg.sender];
-    msg.sender.transfer(r.deposit.sub(r.dues));
-    address payable systemPayable = address(uint160(SYSTEM_REWARD_ADDR));
+    payable(msg.sender).transfer(r.deposit.sub(r.dues));
+    address payable systemPayable = payable(address(uint160(SYSTEM_REWARD_ADDR)));
     systemPayable.transfer(r.dues);
     delete relayersExistMap[msg.sender];
     delete relayers[msg.sender];

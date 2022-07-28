@@ -32,8 +32,6 @@ contract TendermintLightClient is ILightClient, System, IParamSubscriber{
   event paramChange(string key, bytes value);
 
   /* solium-disable-next-line */
-  constructor() public {}
-
   function init() external onlyNotInit {
     uint256 pointer;
     uint256 length;
@@ -41,7 +39,7 @@ contract TendermintLightClient is ILightClient, System, IParamSubscriber{
 
     /* solium-disable-next-line */
     assembly {
-      sstore(chainID_slot, mload(pointer))
+      sstore(chainID.slot, mload(pointer))
     }
 
     ConsensusState memory cs;
@@ -106,7 +104,7 @@ contract TendermintLightClient is ILightClient, System, IParamSubscriber{
     bool validatorChanged = false;
     if ((length&(0x01<<248))!=0x00) {
       validatorChanged = true;
-      ISystemReward(SYSTEM_REWARD_ADDR).claimRewards(msg.sender, rewardForValidatorSetChange);
+      ISystemReward(SYSTEM_REWARD_ADDR).claimRewards(payable(msg.sender), rewardForValidatorSetChange);
     }
     length = length&0xffffffffffffffff;
 
@@ -119,7 +117,7 @@ contract TendermintLightClient is ILightClient, System, IParamSubscriber{
     (cs, actualHeaderHeight) = decodeConsensusState(ptr, length, !validatorChanged);
     require(actualHeaderHeight == height, "header height doesn't equal to the specified height");
 
-    submitters[height] = msg.sender;
+    submitters[height] = payable(msg.sender);
     cs.preValidatorSetChangeHeight = preValidatorSetChangeHeight;
     lightClientConsensusStates[height] = cs;
     if (height > latestHeight) {
@@ -146,7 +144,7 @@ contract TendermintLightClient is ILightClient, System, IParamSubscriber{
   function getChainID() external view returns (string memory) {
     bytes memory chainIDBytes = new bytes(32);
     assembly {
-      mstore(add(chainIDBytes,32), sload(chainID_slot))
+      mstore(add(chainIDBytes,32), sload(chainID.slot))
     }
 
     uint8 chainIDLength = 0;
@@ -200,7 +198,7 @@ contract TendermintLightClient is ILightClient, System, IParamSubscriber{
 
     /* solium-disable-next-line */
     assembly {
-      mstore(outputPtr, sload(chainID_slot))
+      mstore(outputPtr, sload(chainID.slot))
     }
     outputPtr = outputPtr-32;
 

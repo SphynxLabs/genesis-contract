@@ -70,6 +70,7 @@ contract SlashIndicator is ISlashIndicator,System,IParamSubscriber, IApplication
   /*********************** Implement cross chain app ********************************/
   function handleSynPackage(uint8, bytes calldata) external onlyCrossChainContract onlyInit override returns(bytes memory) {
     require(false, "receive unexpected syn package");
+    return new bytes(0);
   }
 
   function handleAckPackage(uint8, bytes calldata msgBytes) external onlyCrossChainContract onlyInit override {

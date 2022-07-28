@@ -239,7 +239,7 @@ function encodePayload(uint8 packageType, uint256 relayFee, bytes memory msgByte
         emit unexpectedFailureAssertionInPackageHandler(handlerContract, lowLevelData);
       }
     }
-    IRelayerIncentivize(INCENTIVIZE_ADDR).addReward(headerRelayer, msg.sender, relayFee, isRelayRewardFromSystemReward[channelIdLocal] || packageType != SYN_PACKAGE);
+    IRelayerIncentivize(INCENTIVIZE_ADDR).addReward(headerRelayer, payable(msg.sender), relayFee, isRelayRewardFromSystemReward[channelIdLocal] || packageType != SYN_PACKAGE);
   }
 
   function sendPackage(uint64 packageSequence, uint8 channelId, bytes memory payload) internal {

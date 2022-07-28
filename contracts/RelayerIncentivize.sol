@@ -62,11 +62,11 @@ contract RelayerIncentivize is IRelayerIncentivize, System, IParamSubscriber {
   
     uint256 actualAmount;
     if (fromSystemReward) {
-      actualAmount = ISystemReward(SYSTEM_REWARD_ADDR).claimRewards(address(uint160(INCENTIVIZE_ADDR)), amount.add(dynamicExtraIncentiveAmount));
+      actualAmount = ISystemReward(SYSTEM_REWARD_ADDR).claimRewards(payable(address(uint160(INCENTIVIZE_ADDR))), amount.add(dynamicExtraIncentiveAmount));
     } else {
-      actualAmount = ISystemReward(TOKEN_HUB_ADDR).claimRewards(address(uint160(INCENTIVIZE_ADDR)), amount);
+      actualAmount = ISystemReward(TOKEN_HUB_ADDR).claimRewards(payable(address(uint160(INCENTIVIZE_ADDR))), amount);
       if (dynamicExtraIncentiveAmount > 0) {
-          actualAmount = actualAmount.add(ISystemReward(SYSTEM_REWARD_ADDR).claimRewards(address(uint160(INCENTIVIZE_ADDR)), dynamicExtraIncentiveAmount));
+          actualAmount = actualAmount.add(ISystemReward(SYSTEM_REWARD_ADDR).claimRewards(payable(address(uint160(INCENTIVIZE_ADDR))), dynamicExtraIncentiveAmount));
       }
     }
 
@@ -104,9 +104,9 @@ contract RelayerIncentivize is IRelayerIncentivize, System, IParamSubscriber {
      uint256 reward = relayerRewardVault[relayerAddr];
      require(reward > 0, "no relayer reward");
      relayerRewardVault[relayerAddr] = 0;
-     address payable recipient = address(uint160(relayerAddr));
+     address payable recipient = payable(address(uint160(relayerAddr)));
      if (!recipient.send(reward)) {
-        address payable systemPayable = address(uint160(SYSTEM_REWARD_ADDR));
+        address payable systemPayable = payable(address(uint160(SYSTEM_REWARD_ADDR)));
         systemPayable.transfer(reward);
         emit rewardToRelayer(SYSTEM_REWARD_ADDR, reward);
         return;
