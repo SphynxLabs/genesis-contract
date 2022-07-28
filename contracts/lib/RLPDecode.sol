@@ -1,4 +1,5 @@
-pragma solidity 0.6.4;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.15;
 
 library RLPDecode {
     uint8 constant STRING_SHORT_START = 0x80;

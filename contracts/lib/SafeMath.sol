@@ -1,4 +1,5 @@
-pragma solidity 0.6.4;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.15;
 
 /**
  * Copyright (c) 2016-2019 zOS Global Limited

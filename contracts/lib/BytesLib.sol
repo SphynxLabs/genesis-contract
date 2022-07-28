@@ -6,7 +6,8 @@
  *      The library lets you concatenate, slice and type cast bytes arrays both in memory and storage.
  */
 
-pragma solidity 0.6.4;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.15;
 
 
 library BytesLib {
