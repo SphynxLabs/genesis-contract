@@ -10,8 +10,8 @@ const init_holders = require("./init_holders")
 
 program.option("--bscChainId <bscChainId>",
     "bscChainId",
-    "0060");
-program.option("-c, --chainid <chainid>", "chain id", "714")
+    "1557");
+program.option("-c, --chainid <chainid>", "chain id", "1557")
 
 program.option(
     "--initValidatorSetBytes <initValidatorSetBytes>",
