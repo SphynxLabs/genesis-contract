@@ -348,7 +348,7 @@ contract BSCValidatorSet is IBSCValidatorSet, System, IParamSubscriber, IApplica
     // step 4: do dusk transfer
     if (address(this).balance>0) {
       emit systemTransfer(address(this).balance);
-      address(uint160(SYSTEM_REWARD_ADDR)).transfer(address(this).balance);
+      payable(address(uint160(SYSTEM_REWARD_ADDR))).transfer(address(this).balance);
     }
     // step 5: do update validator set state
     totalInComing = 0;
@@ -852,7 +852,7 @@ contract BSCValidatorSet is IBSCValidatorSet, System, IParamSubscriber, IApplica
       if (idx == 0) {
         validator.consensusAddress = iter.next().toAddress();
       } else if (idx == 1) {
-        validator.feeAddress = address(uint160(iter.next().toAddress()));
+        validator.feeAddress = payable(address(uint160(iter.next().toAddress())));
       } else if (idx == 2) {
         validator.BBCFeeAddress = iter.next().toAddress();
       } else if (idx == 3) {
